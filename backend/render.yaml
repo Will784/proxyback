@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: loghub-backend
+    runtime: docker
+    plan: free
+    healthCheckPath: /api/v1/proxies
+    envVars:
+      - key: DB_URL          # jdbc:postgresql://HOST:5432/DBNAME  (from your Postgres instance)
+        sync: false
+      - key: DB_USER
+        sync: false
+      - key: DB_PASSWORD
+        sync: false
+      - key: CORS_ORIGINS    # https://YOUR_USER.github.io
+        sync: false
+      - key: SEED_ENABLED
+        value: "true"
